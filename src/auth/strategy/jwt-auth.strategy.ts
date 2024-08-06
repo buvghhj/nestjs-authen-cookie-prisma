@@ -7,7 +7,7 @@ import { Request } from "express";
 @Injectable()
 export class JwtAuthStrategy extends PassportStrategy(Strategy) {
 
-    constructor(private readonly configService: ConfigService) {
+    constructor(configService: ConfigService) {
 
         super({
 

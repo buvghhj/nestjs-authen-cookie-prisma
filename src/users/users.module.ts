@@ -5,13 +5,14 @@ import { JwtAuthStrategy } from '../auth/strategy/jwt-auth.strategy';
 
 @Module({
 
-  controllers: [
-    UsersController
-  ],
+  controllers: [UsersController],
 
   providers: [
+
     UsersService,
+
     JwtAuthStrategy
+
   ]
 
 })

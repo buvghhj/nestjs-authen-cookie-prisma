@@ -6,4 +6,4 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
-      - POSTGRES_DATABASE=nestjs-authentication-cookie
+      - POSTGRES_DB=nestjs-authentication-cookie

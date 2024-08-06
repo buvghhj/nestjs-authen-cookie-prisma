@@ -19,7 +19,9 @@ export class AuthService {
         const user = await this.prisma.user.findUnique({ where: { email: registerDto.email } })
 
         if (user) {
+
             throw new ConflictException('Email already exist')
+
         }
 
         const hashPassword = await bcrypt.hash(registerDto.hash, 10)
@@ -37,19 +39,25 @@ export class AuthService {
         const user = await this.prisma.user.findUnique({ where: { email: loginDto.email } })
 
         if (!user) {
+
             throw new UnauthorizedException('Email has been wrong')
+
         }
 
         const comparePassword = await bcrypt.compare(loginDto.hash, user.hash)
 
         if (!comparePassword) {
+
             throw new UnauthorizedException('Password has been wrong')
+
         }
 
         const token = this.jwtService.sign({ userId: user.id, email: user.email })
 
         if (!token) {
+
             throw new ForbiddenException()
+
         }
 
         res.cookie('access_token', token)
@@ -65,6 +73,5 @@ export class AuthService {
         return res.json({ message: "Logout in successfully" })
 
     }
-
 
 }
